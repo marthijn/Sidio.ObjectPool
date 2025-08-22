@@ -11,7 +11,11 @@ public readonly struct Borrowed<T> : IDisposable
 {
     private readonly ObjectPool<T> _pool;
 
-    internal Borrowed(ObjectPool<T> pool)
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Borrowed{T}"/> struct.
+    /// </summary>
+    /// <param name="pool">The object pool.</param>
+    public Borrowed(ObjectPool<T> pool)
     {
         _pool = pool;
         Instance = pool.Get();
