@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sidio.ObjectPool", "src\Sidio.ObjectPool\Sidio.ObjectPool.csproj", "{2BC2C5A4-377A-4BA8-8141-C50C750B373A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{15859E94-A2B2-4CF6-B705-FAC118F6E501}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E0F0CCE2-9729-4772-9CEA-8C379BF4458B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workflows", "Workflows", "{C894724E-A87E-4F89-AC57-BD934BD36EC3}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+		.github\workflows\build.yml = .github\workflows\build.yml
+		.github\workflows\dependabot-autoapprove.yml = .github\workflows\dependabot-autoapprove.yml
+		.github\workflows\release.yml = .github\workflows\release.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{273E4AC3-4C74-4628-B5CA-0116BF1E7F84}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sidio.ObjectPool.Tests", "src\Sidio.ObjectPool.Tests\Sidio.ObjectPool.Tests.csproj", "{B6EF9E70-D947-43AF-8688-F6357D6B9FD5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2BC2C5A4-377A-4BA8-8141-C50C750B373A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BC2C5A4-377A-4BA8-8141-C50C750B373A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BC2C5A4-377A-4BA8-8141-C50C750B373A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BC2C5A4-377A-4BA8-8141-C50C750B373A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6EF9E70-D947-43AF-8688-F6357D6B9FD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6EF9E70-D947-43AF-8688-F6357D6B9FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6EF9E70-D947-43AF-8688-F6357D6B9FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6EF9E70-D947-43AF-8688-F6357D6B9FD5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2BC2C5A4-377A-4BA8-8141-C50C750B373A} = {15859E94-A2B2-4CF6-B705-FAC118F6E501}
+		{B6EF9E70-D947-43AF-8688-F6357D6B9FD5} = {E0F0CCE2-9729-4772-9CEA-8C379BF4458B}
+	EndGlobalSection
+EndGlobal
