@@ -24,4 +24,7 @@ public readonly struct Borrowed<T> : IDisposable
     /// Gets the borrowed instance.
     /// </summary>
     public T Instance { get; }
+
+    /// <inheritdoc />
+    public override string ToString() => Instance?.ToString() ?? base.ToString() ?? string.Empty;
 }

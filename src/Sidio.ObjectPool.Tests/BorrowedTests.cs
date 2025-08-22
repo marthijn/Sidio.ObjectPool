@@ -19,6 +19,21 @@ public sealed class BorrowedTests
     }
 
     [Fact]
+    public void ToString_ReturnsInstanceToString()
+    {
+        // Arrange
+        var objectPool = Microsoft.Extensions.ObjectPool.ObjectPool.Create<StringBuilder>();
+        using var borrowed = new Borrowed<StringBuilder>(objectPool);
+        borrowed.Instance.Append("Test");
+
+        // Act
+        var result = borrowed.ToString();
+
+        // Assert
+        result.Should().Be("Test");
+    }
+
+    [Fact]
     public void Dispose_ObjectIsReturned()
     {
         // Arrange
