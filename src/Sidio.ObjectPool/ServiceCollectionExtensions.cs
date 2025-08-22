@@ -23,7 +23,7 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddStringBuilderObjectPool(this IServiceCollection serviceCollection, int initialCapacity = 256, int maxRetainedCapacity = 1024)
     {
         serviceCollection.AddObjectPoolProvider();
-        serviceCollection.AddSingleton<IObjectPoolService<StringBuilder>>(sp =>
+        serviceCollection.TryAddSingleton<IObjectPoolService<StringBuilder>>(sp =>
         {
             var provider = sp.GetRequiredKeyedService<ObjectPoolProvider>(ObjectPoolProviderKey);
             var pool = provider.Create(new StringBuilderPolicy(initialCapacity, maxRetainedCapacity));
