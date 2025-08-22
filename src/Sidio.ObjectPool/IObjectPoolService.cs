@@ -8,6 +8,11 @@ public interface IObjectPoolService<T>
     where T : class
 {
     /// <summary>
+    /// Gets the underlying object pool.
+    /// </summary>
+    Microsoft.Extensions.ObjectPool.ObjectPool<T> Pool { get; }
+
+    /// <summary>
     /// Gets an object from the pool if one is available, otherwise creates one. This object should be used and
     /// returned to the pool when done (using the <see cref="Return"/> function).
     /// </summary>

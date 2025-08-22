@@ -5,6 +5,19 @@ namespace Sidio.ObjectPool.Tests;
 public sealed class ObjectPoolServiceTests
 {
     [Fact]
+    public void Pool_ReturnsUnderlyingObjectPool()
+    {
+        // Arrange
+        var objectPool = Microsoft.Extensions.ObjectPool.ObjectPool.Create<StringBuilder>();
+
+        // Act
+        var objectPoolService = new ObjectPoolService<StringBuilder>(objectPool);
+
+        // Assert
+        objectPoolService.Pool.Should().BeSameAs(objectPool);
+    }
+
+    [Fact]
     public void Get_ReturnsObjectFromPool()
     {
         // Arrange

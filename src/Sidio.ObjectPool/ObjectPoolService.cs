@@ -21,6 +21,9 @@ public sealed class ObjectPoolService<T> : IObjectPoolService<T>
     }
 
     /// <inheritdoc />
+    public ObjectPool<T> Pool => _pool;
+
+    /// <inheritdoc />
     public T Get() => _pool.Get();
 
     /// <inheritdoc />
