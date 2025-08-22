@@ -5,7 +5,7 @@ namespace Sidio.ObjectPool;
 /// <summary>
 /// This struct represents a borrowed instance from an object pool.
 /// </summary>
-/// <typeparam name="T">The instance type.</typeparam>
+/// <typeparam name="T">The object type.</typeparam>
 public readonly struct Borrowed<T> : IDisposable
     where T : class
 {
