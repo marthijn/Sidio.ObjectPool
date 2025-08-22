@@ -8,11 +8,11 @@
         <GenerateDocumentationFile>True</GenerateDocumentationFile>
         <Authors>Marthijn van den Heuvel,Sidio</Authors>
         <Copyright>Copyright (c) 2025 Marthijn van den Heuvel</Copyright>
-        <PackageId>Sidio.ObjectPool contains extensions and helper methods for Microsoft.Extensions.ObjectPool.</PackageId>
+        <PackageId>Sidio.ObjectPool</PackageId>
         <RepositoryType>git</RepositoryType>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
-        <Description>Sidio.ObjectPool</Description>
+        <Description>Sidio.ObjectPool contains extensions and helper methods for Microsoft.Extensions.ObjectPool.</Description>
         <PackageTags>objectpool pooling</PackageTags>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
