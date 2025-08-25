@@ -29,6 +29,9 @@ public readonly struct Borrowed<T> : IDisposable
     /// </summary>
     public T Instance { get; }
 
-    /// <inheritdoc />
-    public override string ToString() => Instance?.ToString() ?? base.ToString() ?? string.Empty;
+    /// <summary>
+    /// Converts the borrowed <see cref="Instance"/> to its string representation.
+    /// </summary>
+    /// <returns>A <see cref="string"/>.</returns>
+    public override string ToString() => Instance?.ToString() ?? string.Empty;
 }
