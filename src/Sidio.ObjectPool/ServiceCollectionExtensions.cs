@@ -33,9 +33,8 @@ public static class ServiceCollectionExtensions
         return serviceCollection;
     }
 
-    private static IServiceCollection AddObjectPoolProvider(this IServiceCollection serviceCollection)
+    private static void AddObjectPoolProvider(this IServiceCollection serviceCollection)
     {
         serviceCollection.TryAddKeyedSingleton<ObjectPoolProvider, DefaultObjectPoolProvider>(ObjectPoolProviderKey);
-        return serviceCollection;
     }
 }
