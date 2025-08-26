@@ -11,7 +11,7 @@ namespace Sidio.ObjectPool;
 /// </summary>
 public static class ServiceCollectionExtensions
 {
-    private const string ObjectPoolProviderKey = $"{nameof(Sidio)}.{nameof(ObjectPoolProvider)}";
+    internal const string ObjectPoolProviderKey = $"{nameof(Sidio)}.{nameof(ObjectPoolProvider)}";
 
     /// <summary>
     /// Adds an object pool of string builders to the service collection.
@@ -25,7 +25,7 @@ public static class ServiceCollectionExtensions
         serviceCollection.AddObjectPoolProvider();
         serviceCollection.TryAddSingleton<IObjectPoolService<StringBuilder>>(sp =>
         {
-            var provider = sp.GetRequiredKeyedService<ObjectPoolProvider>(ObjectPoolProviderKey);
+            var provider = sp.GetObjectPoolProvider();
             var pool = provider.Create(new StringBuilderPolicy(initialCapacity, maxRetainedCapacity));
             return new ObjectPoolService<StringBuilder>(pool);
         });
