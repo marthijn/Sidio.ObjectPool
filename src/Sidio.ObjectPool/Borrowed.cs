@@ -17,7 +17,7 @@ public readonly struct Borrowed<T> : IDisposable
     /// <param name="pool">The object pool.</param>
     public Borrowed(ObjectPool<T> pool)
     {
-        _pool = pool;
+        _pool = pool ?? throw new ArgumentNullException(nameof(pool));
         Instance = pool.Get();
     }
 

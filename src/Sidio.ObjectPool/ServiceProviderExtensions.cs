@@ -15,5 +15,6 @@ public static class ServiceProviderExtensions
     /// <returns>The <see cref="ObjectPoolProvider"/>.</returns>
     /// <exception cref="System.InvalidOperationException">There is no service of type <see cref="ObjectPoolProvider"/>.</exception>
     public static ObjectPoolProvider GetObjectPoolProvider(this IServiceProvider serviceProvider) =>
-        serviceProvider.GetRequiredKeyedService<ObjectPoolProvider>(ServiceCollectionExtensions.ObjectPoolProviderKey);
+        (serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider)))
+        .GetRequiredKeyedService<ObjectPoolProvider>(ServiceCollectionExtensions.ObjectPoolProviderKey);
 }

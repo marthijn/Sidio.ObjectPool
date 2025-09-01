@@ -17,7 +17,7 @@ public sealed class ObjectPoolService<T> : IObjectPoolService<T>
     /// <param name="pool">The object pool.</param>
     public ObjectPoolService(ObjectPool<T> pool)
     {
-        _pool = pool;
+        _pool = pool ?? throw new ArgumentNullException(nameof(pool));
     }
 
     /// <inheritdoc />

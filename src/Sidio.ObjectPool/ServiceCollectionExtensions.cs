@@ -21,6 +21,11 @@ public static class ServiceCollectionExtensions
     /// <returns>The <see cref="IServiceCollection"/>.</returns>
     public static IServiceCollection AddStringBuilderObjectPool(this IServiceCollection serviceCollection, int initialCapacity = 256, int maxRetainedCapacity = 1024)
     {
+        if (serviceCollection == null)
+        {
+            throw new ArgumentNullException(nameof(serviceCollection));
+        }
+
         return serviceCollection.AddObjectPoolService((provider, _) => provider.Create(new StringBuilderPolicy(initialCapacity, maxRetainedCapacity)));
     }
 
@@ -34,6 +39,16 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddObjectPoolService<T>(this IServiceCollection serviceCollection, Func<ObjectPoolProvider, IServiceProvider, ObjectPool<T>> factory)
         where T : class
     {
+        if (serviceCollection == null)
+        {
+            throw new ArgumentNullException(nameof(serviceCollection));
+        }
+
+        if (factory == null)
+        {
+            throw new ArgumentNullException(nameof(factory));
+        }
+
         serviceCollection.AddObjectPoolProvider();
         serviceCollection.TryAddSingleton<IObjectPoolService<T>>(sp =>
         {
