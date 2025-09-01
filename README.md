@@ -46,3 +46,12 @@ public class MyClass
     }
 }
 ```
+
+## Usage (custom types)
+```csharp
+// Define a custom builder and object pool policy
+public sealed class MyCustomPolicy : PooledObjectPolicy<MyCustomBuilder> {...}
+
+// Register the object pool service
+services.AddObjectPoolService(provider => provider.Create(new MyCustomPolicy()));
+```
