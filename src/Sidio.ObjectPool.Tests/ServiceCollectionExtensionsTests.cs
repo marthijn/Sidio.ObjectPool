@@ -29,7 +29,7 @@ public sealed class ServiceCollectionExtensionsTests
         var serviceCollection = new ServiceCollection();
 
         // Act
-        var existingServiceCollection = serviceCollection.AddObjectPoolService(provider => provider.Create(new MyBuilderPolicy()));
+        var existingServiceCollection = serviceCollection.AddObjectPoolService((provider, _) => provider.Create(new MyBuilderPolicy()));
         var serviceProvider = serviceCollection.BuildServiceProvider();
 
         // Assert

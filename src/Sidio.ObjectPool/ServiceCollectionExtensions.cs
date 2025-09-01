@@ -22,7 +22,7 @@ public static class ServiceCollectionExtensions
     /// <returns>The <see cref="IServiceCollection"/>.</returns>
     public static IServiceCollection AddStringBuilderObjectPool(this IServiceCollection serviceCollection, int initialCapacity = 256, int maxRetainedCapacity = 1024)
     {
-        return serviceCollection.AddObjectPoolService(provider => provider.Create(new StringBuilderPolicy(initialCapacity, maxRetainedCapacity)));
+        return serviceCollection.AddObjectPoolService((provider, _) => provider.Create(new StringBuilderPolicy(initialCapacity, maxRetainedCapacity)));
     }
 
     /// <summary>
@@ -32,14 +32,14 @@ public static class ServiceCollectionExtensions
     /// <param name="factory">The factory method.</param>
     /// <typeparam name="T">The object pool type.</typeparam>
     /// <returns>The <see cref="IServiceCollection"/>.</returns>
-    public static IServiceCollection AddObjectPoolService<T>(this IServiceCollection serviceCollection, Func<ObjectPoolProvider, ObjectPool<T>> factory)
+    public static IServiceCollection AddObjectPoolService<T>(this IServiceCollection serviceCollection, Func<ObjectPoolProvider, IServiceProvider, ObjectPool<T>> factory)
         where T : class
     {
         serviceCollection.AddObjectPoolProvider();
         serviceCollection.TryAddSingleton<IObjectPoolService<T>>(sp =>
         {
             var provider = sp.GetObjectPoolProvider();
-            var pool = factory(provider);
+            var pool = factory(provider, sp);
             return new ObjectPoolService<T>(pool);
         });
 
