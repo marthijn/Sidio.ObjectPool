@@ -54,4 +54,10 @@ public sealed class MyCustomPolicy : PooledObjectPolicy<MyCustomBuilder> {...}
 
 // Register the object pool service
 services.AddObjectPoolService(provider => provider.Create(new MyCustomPolicy()));
+
+// Use the object pool service
+public class MyClass
+{
+    public MyClass(IObjectPoolService<MyCustomBuilder> myCustomBuilderPoolService) {...}
+}
 ```
