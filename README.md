@@ -1,5 +1,13 @@
 # Sidio.ObjectPool
-Extension and helper methods for [Microsoft.Extensions.ObjectPool](https://www.nuget.org/packages/microsoft.extensions.objectpool/).
+This package provides an `IObjectPoolService<T>` interface and implementation that wraps an [`ObjectPool<T>`](https://www.nuget.org/packages/microsoft.extensions.objectpool/).
+
+Key features:
+- Simplify the usage of object pools
+- Integrate with dependency injection
+- Provide a `Borrow` method that returns an `IDisposable` wrapper around the pooled object, so it is automatically returned to the pool when disposed
+- Provide a default implementation for `StringBuilder` objects
+- Allow easy registration of custom object pools
+- Support .NET standard 2.0 and .NET 8 or higher applications
 
 [![build](https://github.com/marthijn/Sidio.ObjectPool/actions/workflows/build.yml/badge.svg)](https://github.com/marthijn/Sidio.ObjectPool/actions/workflows/build.yml)
 [![NuGet Version](https://img.shields.io/nuget/v/Sidio.ObjectPool)](https://www.nuget.org/packages/Sidio.ObjectPool/)
