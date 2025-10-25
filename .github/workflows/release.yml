@@ -42,31 +42,12 @@ jobs:
         run: dotnet build --configuration Release /p:Version=${RELEASE_VERSION}
       - name: Test
         run: dotnet test --configuration Release /p:Version=${RELEASE_VERSION} --no-build
-      #- name: Pack
-      #  run: dotnet pack --configuration Release /p:Version=${RELEASE_VERSION} --output ${{ env.NuGetDirectory }} -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
-      - name: Pack projects
-        run: |
-          for proj in $(find . -name '*.csproj'); do
-            if [[ "$proj" == *Test* ]]; then
-              echo "Skipping $proj (Test project)"
-            elif [[ "$proj" == *SourceGenerator* ]]; then
-              echo "Packing $proj without symbols (SourceGenerator)"
-              dotnet pack "$proj" \
-                --configuration Release \
-                /p:Version=${RELEASE_VERSION} \
-                --output ${{ env.NuGetDirectory }} \
-                -p:IncludeSymbols=false
-            else
-              echo "Packing $proj"
-              dotnet pack "$proj" \
-                --configuration Release \
-                /p:Version=${RELEASE_VERSION} \
-                --output ${{ env.NuGetDirectory }} \
-                -p:IncludeSymbols=true \
-                -p:SymbolPackageFormat=snupkg
-            fi
-          done
+      - name: Pack
+        run: dotnet pack --configuration Release /p:Version=${RELEASE_VERSION} --output ${{ env.NuGetDirectory }} -p:IncludeSymbols=true -p:SymbolPackageFormat=snupkg
+      - name: NuGet login (OIDC → temp API key)
+        uses: NuGet/login@v1
+        id: login
+        with:
+          user: ${{ secrets.NUGET_USER }}
       - name: Push
-        run: dotnet nuget push ${{ env.NuGetDirectory }}/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${NUGET_API_KEY}
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push ${{ env.NuGetDirectory }}/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ steps.login.outputs.NUGET_API_KEY }}
