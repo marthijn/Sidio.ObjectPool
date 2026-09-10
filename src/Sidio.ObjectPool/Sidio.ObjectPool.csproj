@@ -13,7 +13,7 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
         <Description>Sidio.ObjectPool contains extensions and helper methods for Microsoft.Extensions.ObjectPool.</Description>
-        <PackageTags>objectpool pooling</PackageTags>
+        <PackageTags>objectpool pooling performance</PackageTags>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <Deterministic>true</Deterministic>
